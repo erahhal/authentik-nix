@@ -87,7 +87,7 @@
       in {
         packages = {
           inherit (authentikComponents)
-            docs
+            # docs
             frontend
             pythonEnv
             gopkgs
