@@ -59,7 +59,7 @@
           imports = [ ./module.nix ];
           services.authentik.authentikComponents = pkgs.lib.mkDefault (withSystem pkgs.stdenv.hostPlatform.system (
             { config, ... }:
-            { inherit (config.packages) manage staticWorkdirDeps migrate pythonEnv frontend gopkgs docs; }
+            { inherit (config.packages) manage staticWorkdirDeps migrate pythonEnv frontend gopkgs; }
           ));
         };
 
