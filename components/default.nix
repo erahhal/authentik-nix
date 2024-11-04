@@ -35,7 +35,7 @@ pkgs.lib.makeScope pkgs.newScope (final:
   {
     authentikComponents = {
       inherit
-        docs
+        # docs
         frontend
         pythonEnv
         gopkgs
