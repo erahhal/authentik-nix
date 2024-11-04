@@ -8,8 +8,11 @@ buildNapalmPackage "${authentik-src}/web" rec {
   version = authentik-version; # 0.0.0 specified upstream in package.json
   NODE_ENV = "production";
   nodejs = nodejs_22;
+  # preBuild = ''
+  #   ln -sv ${authentikComponents.docs} ../website
+  #   ln -sv ${authentik-src}/package.json ../
+  # '';
   preBuild = ''
-    ln -sv ${authentikComponents.docs} ../website
     ln -sv ${authentik-src}/package.json ../
   '';
   npmCommands = [
