@@ -15,6 +15,9 @@ buildNapalmPackage "${authentik-src}/web" rec {
   preBuild = ''
     ln -sv ${authentik-src}/package.json ../
   '';
+  # upstream does not clearly separate development dependencies
+  # from release build dependencies, therefore this workaround
+  CHROMEDRIVER_SKIP_DOWNLOAD = "true";
   npmCommands = [
     "npm install --include=dev --nodedir=${nodejs}/include/node --loglevel verbose"
     "npm run build"

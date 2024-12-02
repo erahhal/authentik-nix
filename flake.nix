@@ -32,7 +32,7 @@
       };
     };
     authentik-src = { # change version string in outputs as well when updating
-      url = "github:goauthentik/authentik/version/2024.8.4";
+      url = "github:goauthentik/authentik/version/2024.10.4";
       flake = false;
     };
   };
@@ -51,7 +51,7 @@
     { inherit inputs; }
     ({ inputs, lib, withSystem, ... }:
     let
-      authentik-version = "2024.8.4"; # to pass to the drvs of some components
+      authentik-version = "2024.10.4"; # to pass to the drvs of some components
     in {
       systems = import inputs.systems;
       flake = { self, ... }: {
@@ -95,17 +95,17 @@
             migrate
             manage;
 
-          terraform-provider-authentik = inputs.nixpkgs.legacyPackages.${system}.buildGo121Module rec {
+          terraform-provider-authentik = inputs.nixpkgs.legacyPackages.${system}.buildGo123Module rec {
             pname = "terraform-provider-authentik";
-            version = "2024.6.0";
+            version = "2024.10.1";
             src = pkgs.fetchFromGitHub {
               owner = "goauthentik";
               repo = pname;
               rev = "v${version}";
-              sha256 = "sha256-LsMpkJms/zmjRH+Fc8dcKC1wNkO5+dIRNfKOff9PNhE=";
+              sha256 = "sha256-vU1VHDlxwi5YblVBa3lE1BLuk1Qr3AMSmHY9adkLQZU=";
             };
             doCheck = false; # tests are run against authentik -> vm test
-            vendorHash = "sha256-mlsEdgK+NIf/sae/kIB1FpworX57Y7FPmRRc3ZdPnf8=";
+            vendorHash = "sha256-MtTfEOev6NrZyly5VrTVhoIJZsQX/4xyZcQul5fVO50=";
             postInstall = ''
               path="$out/libexec/terraform-providers/registry.terraform.io/goauthentik/authentik/${version}/''${GOOS}_''${GOARCH}/"
               mkdir -p "$path"
